@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import me.crypnotic.falkon.common.objects.constants.Outcome;
+
 public class FalkonDatabase {
 
 	private HikariDataSource source;
@@ -16,6 +18,18 @@ public class FalkonDatabase {
 		source.setJdbcUrl("Not finished");
 		source.setUsername("with this");
 		source.setPassword("constructor.");
+	}
+
+	public Outcome close() {
+		try {
+			if (source != null && !source.isClosed()) {
+				source.close();
+			}
+			return Outcome.SUCCESSFUL;
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return Outcome.FAILURE;
+		}
 	}
 
 	private void getConnection(FalkonCallback<Optional<Connection>> callback) {
