@@ -6,6 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import lombok.Getter;
 import me.crypnotic.falkon.common.FalkonCommon;
+import me.crypnotic.falkon.common.objects.FalkonTransaction;
+import me.crypnotic.falkon.common.objects.FalkonTransactionResult;
 import me.crypnotic.falkon.common.objects.platformers.IPlatform;
 
 public class FalkonBukkit extends JavaPlugin implements IPlatform {
@@ -26,5 +28,10 @@ public class FalkonBukkit extends JavaPlugin implements IPlatform {
 	@Override
 	public void log(Level level, String message) {
 		getLogger().log(level, message);
+	}
+
+	@Override
+	public FalkonTransactionResult transact(FalkonTransaction transaction) {
+		return null;
 	}
 }
